@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
  */
 final class GlassDrawable extends Drawable {
 
-    private static final int VEIL_ALPHA = 0x14;
+    private static final int VEIL_ALPHA = 0xE6;
     private final View owner;
     private final float radius;
     private final Backdrop.Fill fill = new Backdrop.Fill();
@@ -50,8 +50,8 @@ final class GlassDrawable extends Drawable {
         this.owner = owner;
         this.highlight = highlight;
         this.radius = radius;
-        veil.setColor(0xFFFFFF | VEIL_ALPHA << 24);
-        rim = new GlassRim(1.5f * density, 0xD9FFFFFF, 0x1AFFFFFF, reach);
+        veil.setColor(0x0B0B0B | VEIL_ALPHA << 24);
+        rim = new GlassRim(1.5f * density, 0xFF3A3A3A, 0xFF3A3A3A, reach);
     }
 
     @Override
@@ -68,7 +68,6 @@ final class GlassDrawable extends Drawable {
         }
         float glass = (1f - covered) * fade;
         if (glass > 0f) {
-            fill.draw(canvas, owner, rect, radius, glass);
             veil.setAlpha(Math.round(VEIL_ALPHA * glass));
             canvas.drawRoundRect(rect, radius, radius, veil);
             if (paintsShape && highlight != null && highlight.isShowing()) {

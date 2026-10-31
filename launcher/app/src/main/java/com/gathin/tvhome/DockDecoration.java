@@ -32,10 +32,10 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
         this.dockSize = dockSize;
         this.density = density;
         // Same glass as the top-bar pills (GlassDrawable): an even veil and a shining edge.
-        band.setColor(0x12FFFFFF);
+        band.setColor(0xE60B0B0B);
         trayShadowPaint.setColor(0x38000000);
         trayShadowPaint.setMaskFilter(new android.graphics.BlurMaskFilter(14f * density, android.graphics.BlurMaskFilter.Blur.NORMAL));
-        edge = new GlassRim(1.5f * density, 0xD9FFFFFF, 0x1AFFFFFF, 0.5f);
+        edge = new GlassRim(1.5f * density, 0xFF3A3A3A, 0xFF3A3A3A, 0.5f);
     }
 
     /** The focus shape: the tray's glass would hide it, so the tray paints it over the glass itself. */
@@ -81,9 +81,7 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
         // Soft drop shadow under the glass dock tray
         RectF trayShadow = new RectF(rect);
         trayShadow.offset(0, 4f * density);
-        c.drawRoundRect(trayShadow, radius, radius, trayShadowPaint);
 
-        blur.draw(c, parent, rect, radius, 1f);
         c.drawRoundRect(rect, radius, radius, band);
         // The focus frame of a dock tile sits on the tray's glass and under the tiles; the rest of
         // the shape, outside the tray, is the glider itself showing behind.

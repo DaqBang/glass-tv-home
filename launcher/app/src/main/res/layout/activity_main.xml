@@ -423,13 +423,9 @@
                     android:format12Hour="h:mm"
                     android:format24Hour="HH:mm"
                     android:textColor="#FFFFFFFF"
-                    android:textSize="56sp"
+                    android:textSize="80sp"
                     android:fontFamily="@font/doto"
                     android:letterSpacing="-0.03"
-                    android:shadowColor="#80000000"
-                    android:shadowDx="0"
-                    android:shadowDy="1"
-                    android:shadowRadius="4"
                     android:includeFontPadding="false" />
 
                 <!-- 1:2 layout: 1 jam on left, 2 stacked rows on right (atas: am/pm, bawah: tarikh) -->
@@ -446,15 +442,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:includeFontPadding="false"
-                        android:textColor="#FFFFFFFF"
-                        android:textSize="13sp"
-                        android:fontFamily="@font/inter"
-                        android:fontVariationSettings="'wght' 600"
+                        android:textColor="#FFFF453A"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/doto"
                         android:letterSpacing="0.06"
-                        android:shadowColor="#80000000"
-                        android:shadowDx="0"
-                        android:shadowDy="1"
-                        android:shadowRadius="3"
                         android:textAllCaps="true" />
 
                     <!-- Bawah: Tarikh (e.g. 23 OKT 2026) -->
@@ -465,14 +456,9 @@
                         android:layout_marginTop="3dp"
                         android:includeFontPadding="false"
                         android:textColor="#E6FFFFFF"
-                        android:textSize="13sp"
-                        android:fontFamily="@font/inter"
-                        android:fontVariationSettings="'wght' 600"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/doto"
                         android:letterSpacing="0.06"
-                        android:shadowColor="#80000000"
-                        android:shadowDx="0"
-                        android:shadowDy="1"
-                        android:shadowRadius="3"
                         android:textAllCaps="true" />
 
                     <!-- Shamsi date ("27 Mehr 1405"), shown when shamsi_date is on. -->
