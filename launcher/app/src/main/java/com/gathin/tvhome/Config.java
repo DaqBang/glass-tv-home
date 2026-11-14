@@ -172,8 +172,8 @@ final class Config {
         int wallpaperMinutes = json != null ? integer(json, "wallpaper_minutes", 30, 0, 1440) : 30;
         int wallpaperSeconds = json != null ? integer(json, "wallpaper_seconds", 0, 5, 86400) : 0;
         long wallpaperIntervalMs = wallpaperSeconds > 0 ? wallpaperSeconds * 1000L : wallpaperMinutes * 60_000L;
-        // On unless a theme says otherwise: a fresh install shows places with nothing to set up.
-        boolean places = wallpaperOn && (json == null || bool(json, "places", true));
+        // Off unless a theme says "places": true: the Nothing OS look is black with a dot grid.
+        boolean places = wallpaperOn && json != null && bool(json, "places", false);   // Nothing OS: off unless a theme turns it on
         String wallpaperFeed = json != null ? string(json, "wallpaper_feed", "") : "";
         boolean wallpaperOnline = wallpaperOn && json != null && (bool(json, "wallpaper_online", false) || !wallpaperFeed.isEmpty());
         if (dir != null && wallpaperOnline) {
