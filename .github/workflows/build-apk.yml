@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+permissions:
+  contents: write
 jobs:
   apk:
     runs-on: ubuntu-latest
@@ -21,3 +23,13 @@ jobs:
         with:
           name: glass-tv-apk
           path: launcher/app/build/outputs/apk/release/*.apk
+      # A direct download link with no GitHub login: each branch's latest APK as a pre-release.
+      - name: Publish APK as a pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: apk-${{ github.ref_name }}
+        run: |
+          cp app/build/outputs/apk/release/app-release.apk glass-tv-home.apk
+          gh release delete "$TAG" --yes --cleanup-tag || true
+          gh release create "$TAG" glass-tv-home.apk --prerelease --target "$GITHUB_SHA" \
+            --title "APK ${{ github.ref_name }}" --notes "Build from ${GITHUB_SHA::7}"
