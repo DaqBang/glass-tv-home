@@ -378,7 +378,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (Math.abs(launch.getLong("boot_at", 0) - bootAt) < 60_000) tilesAnimatedOnce = true;
         else launch.edit().putLong("boot_at", bootAt).apply();
         ensureSystemScreensaverAndSleepSettings();
-        root.setBackgroundColor(cfg.backgroundColor);
+        root.setBackground(new DotGridDrawable(density, cfg.backgroundColor));   // a wallpaper, once shown, covers it
         config = cfg;
         wallpapers = cfg.wallpapers;
         wallpaperIntervalMs = getWallpaperIntervalMs();
@@ -1951,6 +1951,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     /** With crossFade, the old glow fades into the new one (two small textures, one blend). */
     private void setAmbient(int color, boolean crossFade) {
+        color = 0x5A5A5A;   // Nothing OS: monochrome, a soft grey light instead of each app's colour
         if (color == ambientColor && ambient.getBackground() != null) return;
         android.graphics.drawable.Drawable old = ambient.getBackground();
         if (old instanceof android.graphics.drawable.TransitionDrawable) {
